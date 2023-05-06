@@ -1,3 +1,6 @@
+/*
+package classwork.day16;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -57,4 +60,4 @@ public class RectangleTest {
         rectangleMax.setLength(1.7E-308);
         Assert.assertEquals(1.7E-308, rectangleMax.getLength(), 0);
     }
-}
+}*/

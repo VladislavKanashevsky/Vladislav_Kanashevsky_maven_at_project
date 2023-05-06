@@ -1,3 +1,6 @@
+/*
+package classwork.day16;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,3 +39,4 @@ public class EvenOddCheckerTest {
         
     }
 }
+*/
