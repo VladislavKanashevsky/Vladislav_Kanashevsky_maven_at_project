@@ -1,6 +1,6 @@
-package tests;
+package project.tests;
 
-import driver.Driver;
+import project.driver.Driver;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;

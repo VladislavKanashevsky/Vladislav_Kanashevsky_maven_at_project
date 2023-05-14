@@ -1,6 +1,7 @@
+/*
 package homework.day18;
 
-import driver.Driver;
+import project.driver.Driver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class SelectTest {
+public class SelectTestOne {
 
     WebDriver driver = Driver.getWebDriver();
 
@@ -36,3 +37,4 @@ public class SelectTest {
         driver.quit();
     }
 }
+*/

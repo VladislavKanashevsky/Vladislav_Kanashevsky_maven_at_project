@@ -1,6 +1,6 @@
 package homework.day18;
 
-import driver.Driver;
+import project.driver.Driver;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
