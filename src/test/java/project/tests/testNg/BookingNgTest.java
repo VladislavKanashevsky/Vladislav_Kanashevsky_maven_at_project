@@ -1,7 +1,8 @@
-package project.tests.junit4;
+package project.tests.testNg;
 
 import org.apache.log4j.Logger;
-import org.junit.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 import project.driver.Driver;
 import project.pages.page_booking.HomePage;
 import project.pages.page_booking.HotelPage;
@@ -9,7 +10,7 @@ import project.pages.page_booking.ResultsPage;
 import project.utils.ActionsUtil;
 import project.utils.DateUtil;
 
-public class BookingTest {
+public class BookingNgTest {
 
     HomePage bookingHomePage = new HomePage();
 
@@ -21,20 +22,20 @@ public class BookingTest {
 
     ActionsUtil actions = new ActionsUtil();
 
-    public static final Logger LOGGER = Logger.getLogger(BookingTest.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(BookingNgTest.class.getName());
 
-    @Before
+    @BeforeMethod
     public void beforeTests() {
-        LOGGER.info("The booking junit Before method is started");
+        LOGGER.info("The booking testNG Before method is started");
         Driver.getWebDriver();
-        LOGGER.info("The booking junit Before method is finished");
+        LOGGER.info("The booking testNG Before method is finished");
     }
 
-    @After
+    @AfterMethod
     public void afterTests() {
-        LOGGER.info("The booking junit After method is started");
+        LOGGER.info("The booking testNG After method is started");
         Driver.closeDriver();
-        LOGGER.info("The booking junit After method is finished");
+        LOGGER.info("The booking testNG After method is finished");
     }
 
     @Test
@@ -53,7 +54,7 @@ public class BookingTest {
         bookingResultsPage.waitForSpinner();
         bookingResultsPage.clickOnTheSortDropdown();
         bookingResultsPage.clickOnThePriceSorting();
-        bookingResultsPage.assertPricePerNight();
+        bookingResultsPage.assertPricePerNightTestNG();
         LOGGER.debug("Test 'pricePerNightTest' is executed");
     }
 
@@ -68,7 +69,7 @@ public class BookingTest {
         actions.scrollToElement(bookingResultsPage.findHotel(10));
         actions.changeElementBackground(bookingResultsPage.findHotel(10));
         actions.changeElementTextColor(bookingResultsPage.findHotelTitle(10));
-        Assert.assertEquals("The text color isn't red", "color: red;", bookingResultsPage.findHotelTitle(10).getAttribute("style"));
+        Assert.assertEquals(bookingResultsPage.findHotelTitle(10).getAttribute("style"), "color: red;", "The text color isn't red");
         LOGGER.debug("Test 'colorsTest' is executed");
     }
 
@@ -80,7 +81,7 @@ public class BookingTest {
         bookingHomePage.selectingDate(date.setDay(3));
         bookingHomePage.selectingDate(date.setDay(10));
         bookingHomePage.clickOnTheSubmit();
-        Assert.assertTrue("There are no hotels", bookingResultsPage.findHotels().size() > 0);
+        Assert.assertTrue(bookingResultsPage.findHotels().size() > 0, "There are no hotels");
         LOGGER.debug("Test 'hotelAvailabilityTest' is executed");
     }
 
@@ -96,9 +97,7 @@ public class BookingTest {
         bookingResultsPage.waitForSpinner();
         int rating = bookingResultsPage.getNumberOfMaxRating();
         bookingResultsPage.openFirstHotelUrl();
-        Assert.assertTrue("The hotel rating is less than 9",
-                bookingHotelPage.getNumberOfHotelRating() >= rating
-        );
+        Assert.assertTrue(bookingHotelPage.getNumberOfHotelRating() >= rating, "The hotel rating is less than 9");
         LOGGER.debug("Test 'hotelRatingTest' is executed");
     }
 
@@ -108,7 +107,7 @@ public class BookingTest {
         bookingHomePage.skipSignInOffer();
         actions.hoverElement(bookingHomePage.findCurrency());
         String tooltip = bookingHomePage.getCurrencyTooltip();
-        Assert.assertEquals("There is an incorrect tooltip", "Выберите валюту", tooltip);
+        Assert.assertEquals(tooltip, "Выберите валюту", "There is an incorrect tooltip");
         LOGGER.debug("Test 'currencyTest' is executed");
     }
 
@@ -118,7 +117,8 @@ public class BookingTest {
         bookingHomePage.skipSignInOffer();
         actions.hoverElement(bookingHomePage.findLanguage());
         String tooltip = bookingHomePage.getLanguageTooltip();
-        Assert.assertEquals("There is an incorrect tooltip", "Выберите язык", tooltip);
+        Assert.assertEquals(tooltip, "Выберите язык", "There is an incorrect tooltip");
         LOGGER.debug("Test 'languageTest' is executed");
     }
 }
+

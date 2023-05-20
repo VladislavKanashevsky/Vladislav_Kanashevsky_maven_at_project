@@ -3,8 +3,12 @@ package project.pages.page_booking;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.log4testng.Logger;
 import project.driver.Driver;
+
+import java.time.Duration;
 
 public class HomePage {
 
@@ -18,13 +22,15 @@ public class HomePage {
 
     public final static String PLACE_NAME_CLICK = "//*[@data-testid='autocomplete-results']/li[1]/descendant:: div[contains(text(),'";
 
+    public final static String DATA = "[data-date='";
+
     public final static String OCCUPANCY = "[data-testid='occupancy-config']";
 
     public final static String ADULTS = "//input[@id='group_adults']/following-sibling::div/button[2]";
 
     public final static String APARTMENT = "//input[@id='no_rooms']/following-sibling::div/button[2]";
 
-    public final static String CLICK_SUBMIT = "//button[@type='submit']";
+    public final static String SUBMIT = "//button[@type='submit']";
 
     public final static String FIND_CURRENCY = "[data-testid='header-currency-picker-trigger']";
 
@@ -40,69 +46,76 @@ public class HomePage {
 
     public void getUrl() {
         driver.get(BOOKING);
-        LOGGER.info("Open https://booking.com");
+        LOGGER.trace("Open the https://booking.com");
     }
 
-    public void skipSign() {
+    public void skipSignInOffer() {
         driver.findElement(By.xpath(SKIP_MENU)).click();
-        LOGGER.info("Skip 'Скрыть меня входа в аккаунт'");
+        LOGGER.trace("Skip the SignIn offer popup");
     }
 
     public void selectingPlace(String placeName) {
         driver.findElement(By.cssSelector(PLACE_NAME)).sendKeys(placeName);
-        LOGGER.info("Enter the city name");
+        LOGGER.trace("Enter the city name");
         driver.findElement(By.xpath(PLACE_NAME_CLICK + placeName + "')]")).click();
-        LOGGER.info("Click on the city name");
+        LOGGER.trace("Click on the city");
     }
 
     public void selectingDate(String date) {
-        driver.findElement(By.cssSelector("[data-date='" + date + "']")).click();
-        LOGGER.info("Select date");
+        driver.findElement(By.cssSelector(DATA + date + "']")).click();
+        LOGGER.trace("Select date");
     }
 
-    public void clickDropdown() {
+    public void clickOnOccupancyDropdown() {
         driver.findElement((By.cssSelector(OCCUPANCY))).click();
-        LOGGER.info("Click on the Occupancy");
+        LOGGER.trace("Click on the Occupancy Dropdown");
     }
 
-    public void clickAdults() {
+    public void clickOnTheAdults() {
         driver.findElement(By.xpath(ADULTS)).click();
-        LOGGER.info("Click on the Adults");
+        LOGGER.trace("Click on the Adults");
     }
 
-    public void clickApartments() {
+    public void clickOnTheApartments() {
         driver.findElement(By.xpath(APARTMENT)).click();
-        LOGGER.info("Click on the Apartments");
+        LOGGER.trace("Click on the Apartments");
     }
 
-    public void clickSubmit() {
-        driver.findElement(By.xpath(CLICK_SUBMIT)).click();
-        LOGGER.info("Click on the submit");
+    public void clickOnTheSubmit() {
+        driver.findElement(By.xpath(SUBMIT)).click();
+        LOGGER.trace("Click on the submit button");
     }
 
     public WebElement findCurrency() {
-        LOGGER.info("Find the currency element");
+        WebDriverWait element = new WebDriverWait(driver, Duration.ofSeconds(10));
+        element.until(
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector(FIND_CURRENCY))
+        );
+        LOGGER.trace("Find the currency element");
         return driver.findElement(By.cssSelector(FIND_CURRENCY));
-
     }
 
     public WebElement findLanguage() {
-        LOGGER.info("Find the language element");
+        WebDriverWait element = new WebDriverWait(driver, Duration.ofSeconds(10));
+        element.until(
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector(FIND_LANGUAGE))
+        );
+        LOGGER.trace("Find the language element");
         return driver.findElement(By.cssSelector(FIND_LANGUAGE));
     }
 
-    public String getCurrency() {
-        LOGGER.info("Find currency popup");
+    public String getCurrencyTooltip() {
+        LOGGER.trace("Find the tooltip value of the currency element");
         return driver.findElement(By.xpath(FIND_CURRENCY_POPUP)).getText();
     }
 
-    public String getLanguage() {
-        LOGGER.info("Find language popup");
+    public String getLanguageTooltip() {
+        LOGGER.trace("Find the tooltip value of the language element");
         return driver.findElement(By.xpath(FIND_LANGUAGE_POPUP)).getText();
     }
 
-    public void clickRegistration() {
+    public void clickRegister() {
         driver.findElement(By.xpath(REGISTRATION)).click();
-        LOGGER.info("Click on the registration");
+        LOGGER.trace("Click on the Register button");
     }
 }

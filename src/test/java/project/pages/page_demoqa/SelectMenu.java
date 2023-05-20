@@ -3,9 +3,7 @@ package project.pages.page_demoqa;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import project.driver.Driver;
-import project.pages.page_booking.SingPage;
-
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class SelectMenu {
 
@@ -17,27 +15,27 @@ public class SelectMenu {
 
     public static final String SELECT_ONE = "selectOne";
 
-    public static final String MULTI_SELECT = "//div[text()='Select...']/..";
+    public static final String MULTI_SELECT_DROP_DOWN = "//*[@id='react-select-4-input']/../../..";
 
     public static final Logger LOGGER = Logger.getLogger(SelectMenu.class.getName());
 
-    public void getUrlDemoqa() {
+    public void getUrlToSelectMenu() {
         driver.get(DEMOQA_URL);
-        LOGGER.info("Open the https://demoqa.com/select-menu");
+        LOGGER.trace("Open the https://demoqa.com/select-menu");
     }
 
-    public void clickSelectValue() {
+    public void clickSelectValueDropdown() {
         driver.findElement(By.id(WITH_OPT_GROUP)).click();
-        LOGGER.info("Click on the Select Value");
+        LOGGER.trace("Click on the SelectValue Dropdown");
     }
 
-    public void clickSelectOne() {
+    public void clickSelectOneDropdown() {
         driver.findElement(By.id(SELECT_ONE)).click();
-        LOGGER.info("Click on the Select One");
+        LOGGER.trace("Click on the SelectOne Dropdown");
     }
 
-    public void clickMultiSelect() {
-        driver.findElement(By.xpath(MULTI_SELECT)).click();
-        LOGGER.info("Click on the MultiSelect Dropdown");
+    public void clickMultiSelectDropdown() {
+        driver.findElement(By.xpath(MULTI_SELECT_DROP_DOWN)).click();
+        LOGGER.trace("Click on the MultiSelect Dropdown");
     }
 }

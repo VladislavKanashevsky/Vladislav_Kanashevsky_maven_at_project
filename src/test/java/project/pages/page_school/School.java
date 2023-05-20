@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import project.driver.Driver;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class School {
 
@@ -17,14 +17,13 @@ public class School {
 
     public static final Logger LOGGER = Logger.getLogger(School.class.getName());
 
-    public void getUrlSchool() {
+    public void getSchoolUrl() {
         driver.get(SCHOOL_URL);
-        LOGGER.info("Open https://www.w3schools.com/java/");
-
+        LOGGER.trace("Open the https://www.w3schools.com/java/");
     }
 
     public WebElement findTutorial() {
-        LOGGER.info("Find the 'Tutorial' word");
+        LOGGER.trace("Find the 'Tutorial' word");
         return driver.findElement(By.xpath(TUTORIAL));
     }
 }

@@ -1,33 +1,30 @@
-package project.tests.junit4;
+package project.tests.testNg;
 
 import org.apache.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.*;
 import project.driver.Driver;
 import project.objects.SelectMenuItems;
 import project.pages.page_demoqa.SelectMenu;
 
-public class DemoqaTest {
+public class DemoQATestNGTests {
 
     SelectMenu selectMenu = new SelectMenu();
-
     SelectMenuItems selectMenuItems = new SelectMenuItems();
 
-    public static final Logger LOGGER = Logger.getLogger(DemoqaTest.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(DemoQATestNGTests.class.getName());
 
-    @Before
+    @BeforeMethod
     public void beforeTests() {
-        LOGGER.info("The demoqa junit Before method is started");
+        LOGGER.info("The demoQA testNG Before method is started");
         Driver.getWebDriver();
-        LOGGER.info("The demoqa junit Before method is finished");
+        LOGGER.info("The demoQA testNG Before method is finished");
     }
 
-    @After
+    @AfterMethod
     public void afterTests() {
-        LOGGER.info("The demoqa junit After method is started");
+        LOGGER.info("The demoQA testNG After method is started");
         Driver.closeDriver();
-        LOGGER.info("The demoqa junit After method is finished");
+        LOGGER.info("The demoQA testNG After method is finished");
     }
 
     @Test

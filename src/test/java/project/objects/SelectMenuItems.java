@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import project.driver.Driver;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class SelectMenuItems {
 
@@ -23,28 +23,28 @@ public class SelectMenuItems {
 
     public static final Logger LOGGER = Logger.getLogger(SelectMenuItems.class.getName());
 
-    public void selectGroupOption() {
+    public void selectGroup1Option1OfSelectValue() {
         driver.findElement(By.id(REACT_SELECT_2_OPTION_0_0)).click();
-        LOGGER.info("Click on the Group Option");
+        LOGGER.trace("Click on the Group1Option1O");
     }
 
-    public void selectDr() {
+    public void selectDrOfSelectOne() {
         driver.findElement(By.id(REACT_SELECT_3_OPTION_0_0)).click();
-        LOGGER.info("Click on the Dr");
+        LOGGER.trace("Click on the Dr");
     }
 
-    public void selectColorOldSelectMenu() {
-        new Select(driver.findElement(By.id(OLD_SELECT_MENU))).selectByValue("2");
-        LOGGER.info("Click on the Green, value = '2'");
+    public void selectBlueOfOldStyleSelectMenu() {
+        new Select(driver.findElement(By.id(OLD_SELECT_MENU))).selectByValue("1");
+        LOGGER.trace("Click on the Blue");
     }
 
-    public void selectColorDropdown() {
+    public void selectGreenOfMultiSelectDropdown() {
         driver.findElement(By.id(REACT_SELECT_4_OPTION_0_0)).click();
-        LOGGER.info("Click on the Green");
+        LOGGER.trace("Click on the Green");
     }
 
-    public void selectCars() {
-        new Select(driver.findElement(By.id(CARS))).selectByValue("Volvo");
-        LOGGER.info("Click on the Volvo");
+    public void selectAudiOfStandardMultiSelect() {
+        new Select(driver.findElement(By.id(CARS))).selectByValue("audi");
+        LOGGER.trace("Click on the Audi");
     }
 }

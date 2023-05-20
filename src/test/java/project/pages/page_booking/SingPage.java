@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import project.driver.Driver;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class SingPage {
 
@@ -25,27 +25,27 @@ public class SingPage {
 
     public void enterEmail(String myEmail) {
         driver.findElement(By.id(USERNAME)).sendKeys(myEmail);
-        LOGGER.info("Enter the '" + myEmail + "' to the eamil field");
+        LOGGER.trace("Enter the '" + myEmail + "' to the eamil field");
         driver.findElement(By.xpath(SUBMIT)).click();
-        LOGGER.info("Click on the submit button");
+        LOGGER.trace("Click on the submit button");
     }
 
     public void clickSubmit() {
         driver.findElement(By.xpath(SUBMIT)).click();
-        LOGGER.info("Click on the submit button");
+        LOGGER.trace("Click on the submit button");
     }
 
     public void enterPassword(String password) {
         driver.findElement(By.id(NEW_PASSWORD)).sendKeys(password);
-        LOGGER.info("Enter the '" + password + "' to the new password field");
+        LOGGER.trace("Enter the '" + password + "' to the new password field");
         driver.findElement(By.id(CONFIRMED_PASSWORD)).sendKeys(password);
-        LOGGER.info("Enter the '" + password + "' to the confirm password field");
+        LOGGER.trace("Enter the '" + password + "' to the confirm password field");
         driver.findElement(By.xpath(SUBMIT)).click();
-        LOGGER.info("Click on the submit button");
+        LOGGER.trace("Click on the submit button");
     }
 
     public WebElement getCaptcha() {
-        LOGGER.info("Wait to the captcha");
+        LOGGER.trace("Trying to get the captcha");
         return driver.findElement(By.xpath(CAPTCHA));
     }
 }

@@ -1,8 +1,9 @@
 package project.tests.junit4;
 
+import org.apache.log4j.Logger;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import project.pages.page_booking.HomePage;
 import project.pages.page_booking.SingPage;
 import project.utils.ActionsUtil;
@@ -12,24 +13,29 @@ public class BookingRegistrationTest {
     HomePage bookingHomePage = new HomePage();
 
     SingPage singPage = new SingPage();
+
     ActionsUtil actions = new ActionsUtil();
 
-    @BeforeTest
+    public static final Logger LOGGER = Logger.getLogger(BookingRegistrationTest.class.getName());
+
+    @Before
     public void beforeTest() {
     }
 
+    @After
+    public void afterTest() {
+    }
+
     @Test
-    public void registrationTest() {
+    public void registerTest() {
         bookingHomePage.getUrl();
-        bookingHomePage.skipSign();
-        bookingHomePage.clickRegistration();
+        bookingHomePage.skipSignInOffer();
+        bookingHomePage.clickRegister();
         singPage.enterEmail("leffler.baby@trashmail.fr");
         singPage.clickSubmit();
         singPage.enterPassword("Af0123456789");
         actions.clickAndHold(singPage.getCaptcha());
     }
-
-    @AfterTest
-    public void afterTest() {
-    }
 }
+
+
