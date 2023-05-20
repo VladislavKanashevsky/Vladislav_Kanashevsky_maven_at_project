@@ -6,12 +6,12 @@ import project.driver.Driver;
 import project.objects.SelectMenuItems;
 import project.pages.page_demoqa.SelectMenu;
 
-public class DemoQATestNGTests {
+public class DemoqaNgTest {
 
     SelectMenu selectMenu = new SelectMenu();
     SelectMenuItems selectMenuItems = new SelectMenuItems();
 
-    public static final Logger LOGGER = Logger.getLogger(DemoQATestNGTests.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(DemoqaNgTest.class.getName());
 
     @BeforeMethod
     public void beforeTests() {

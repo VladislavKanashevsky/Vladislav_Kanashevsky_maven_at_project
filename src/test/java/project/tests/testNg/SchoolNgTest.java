@@ -11,7 +11,7 @@ import project.pages.page_school.School;
 import project.utils.ActionsUtil;
 
 
-public class W3SchoolsTestNGTests {
+public class SchoolNgTest {
 
     School school = new School();
 
@@ -19,7 +19,7 @@ public class W3SchoolsTestNGTests {
 
     Google google = new Google();
 
-    public static final Logger LOGGER = Logger.getLogger(W3SchoolsTestNGTests.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(SchoolNgTest.class.getName());
 
     @BeforeMethod
     public void beforeTests() {
