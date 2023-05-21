@@ -3,19 +3,19 @@ package project.tests.junit4;
 import org.apache.log4j.Logger;
 import org.junit.*;
 import project.driver.Driver;
-import project.pages.page_booking.HomePage;
-import project.pages.page_booking.HotelPage;
-import project.pages.page_booking.ResultsPage;
+import project.pages.page_booking.HomePageBooking;
+import project.pages.page_booking.HotelPageBooking;
+import project.pages.page_booking.ResultsPageBooking;
 import project.utils.ActionsUtil;
 import project.utils.DateUtil;
 
 public class BookingTest {
 
-    HomePage bookingHomePage = new HomePage();
+    HomePageBooking bookingHomePageBooking = new HomePageBooking();
 
-    ResultsPage bookingResultsPage = new ResultsPage();
+    ResultsPageBooking bookingResultsPageBooking = new ResultsPageBooking();
 
-    HotelPage bookingHotelPage = new HotelPage();
+    HotelPageBooking bookingHotelPageBooking = new HotelPageBooking();
 
     DateUtil date = new DateUtil();
 
@@ -39,85 +39,85 @@ public class BookingTest {
 
     @Test
     public void pricePerNightTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        bookingHomePage.selectingPlace("Париж");
-        bookingHomePage.selectingDate(date.setDay(3));
-        bookingHomePage.selectingDate(date.setDay(10));
-        bookingHomePage.clickOnOccupancyDropdown();
-        bookingHomePage.clickOnTheAdults();
-        bookingHomePage.clickOnTheAdults();
-        bookingHomePage.clickOnTheApartments();
-        bookingHomePage.clickOnTheSubmit();
-        bookingResultsPage.clickOnTheMaxPricePerNight();
-        bookingResultsPage.waitForSpinner();
-        bookingResultsPage.clickOnTheSortDropdown();
-        bookingResultsPage.clickOnThePriceSorting();
-        bookingResultsPage.assertPricePerNight();
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        bookingHomePageBooking.selectPlace("Париж");
+        bookingHomePageBooking.selectDate(date.setDay(3));
+        bookingHomePageBooking.selectDate(date.setDay(10));
+        bookingHomePageBooking.clickOnOccupancyDropdown();
+        bookingHomePageBooking.clickOnTheAdults();
+        bookingHomePageBooking.clickOnTheAdults();
+        bookingHomePageBooking.clickOnTheApartments();
+        bookingHomePageBooking.clickOnTheSubmit();
+        bookingResultsPageBooking.clickOnTheMaxPriceNight();
+        bookingResultsPageBooking.waitForSpinner();
+        bookingResultsPageBooking.clickOnTheSortDropdown();
+        bookingResultsPageBooking.clickOnThePriceSort();
+        bookingResultsPageBooking.assertPriceNight();
         LOGGER.debug("Test 'pricePerNightTest' is executed");
     }
 
     @Test
     public void colorsTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        bookingHomePage.selectingPlace("Париж");
-        bookingHomePage.selectingDate(date.setDay(3));
-        bookingHomePage.selectingDate(date.setDay(10));
-        bookingHomePage.clickOnTheSubmit();
-        actions.scrollToElement(bookingResultsPage.findHotel(10));
-        actions.changeElementBackground(bookingResultsPage.findHotel(10));
-        actions.changeElementTextColor(bookingResultsPage.findHotelTitle(10));
-        Assert.assertEquals("The text color isn't red", "color: red;", bookingResultsPage.findHotelTitle(10).getAttribute("style"));
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        bookingHomePageBooking.selectPlace("Париж");
+        bookingHomePageBooking.selectDate(date.setDay(3));
+        bookingHomePageBooking.selectDate(date.setDay(10));
+        bookingHomePageBooking.clickOnTheSubmit();
+        actions.scrollToElement(bookingResultsPageBooking.findHotel(10));
+        actions.changeElementBackground(bookingResultsPageBooking.findHotel(10));
+        actions.changeElementTextColor(bookingResultsPageBooking.findHotelTitle(10));
+        Assert.assertEquals("The text color isn't red", "color: red;", bookingResultsPageBooking.findHotelTitle(10).getAttribute("style"));
         LOGGER.debug("Test 'colorsTest' is executed");
     }
 
     @Test
     public void hotelAvailabilityTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        bookingHomePage.selectingPlace("Париж");
-        bookingHomePage.selectingDate(date.setDay(3));
-        bookingHomePage.selectingDate(date.setDay(10));
-        bookingHomePage.clickOnTheSubmit();
-        Assert.assertTrue("There are no hotels", bookingResultsPage.findHotels().size() > 0);
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        bookingHomePageBooking.selectPlace("Париж");
+        bookingHomePageBooking.selectDate(date.setDay(3));
+        bookingHomePageBooking.selectDate(date.setDay(10));
+        bookingHomePageBooking.clickOnTheSubmit();
+        Assert.assertTrue("There are no hotels", bookingResultsPageBooking.findHotels().size() > 0);
         LOGGER.debug("Test 'hotelAvailabilityTest' is executed");
     }
 
     @Test
     public void hotelRatingTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        bookingHomePage.selectingPlace("Париж");
-        bookingHomePage.selectingDate(date.setDay(3));
-        bookingHomePage.selectingDate(date.setDay(10));
-        bookingHomePage.clickOnTheSubmit();
-        bookingResultsPage.clickOnTheMaxRating();
-        bookingResultsPage.waitForSpinner();
-        int rating = bookingResultsPage.getNumberOfMaxRating();
-        bookingResultsPage.openFirstHotelUrl();
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        bookingHomePageBooking.selectPlace("Париж");
+        bookingHomePageBooking.selectDate(date.setDay(3));
+        bookingHomePageBooking.selectDate(date.setDay(10));
+        bookingHomePageBooking.clickOnTheSubmit();
+        bookingResultsPageBooking.clickOnTheMaxRating();
+        bookingResultsPageBooking.waitForSpinner();
+        int rating = bookingResultsPageBooking.getNumberOfMaxRating();
+        bookingResultsPageBooking.openFirstHotelUrl();
         Assert.assertTrue("The hotel rating is less than 9",
-                bookingHotelPage.getNumberOfHotelRating() >= rating
+                bookingHotelPageBooking.getNumberOfHotelRating() >= rating
         );
         LOGGER.debug("Test 'hotelRatingTest' is executed");
     }
 
     @Test
     public void currencyTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        actions.hoverElement(bookingHomePage.findCurrency());
-        String tooltip = bookingHomePage.getCurrencyTooltip();
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        actions.hoverElement(bookingHomePageBooking.findCurrency());
+        String tooltip = bookingHomePageBooking.getCurrencyTooltip();
         Assert.assertEquals("There is an incorrect tooltip", "Выберите валюту", tooltip);
         LOGGER.debug("Test 'currencyTest' is executed");
     }
 
     @Test
     public void languageTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        actions.hoverElement(bookingHomePage.findLanguage());
-        String tooltip = bookingHomePage.getLanguageTooltip();
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        actions.hoverElement(bookingHomePageBooking.findLanguage());
+        String tooltip = bookingHomePageBooking.getLanguageTooltip();
         Assert.assertEquals("There is an incorrect tooltip", "Выберите язык", tooltip);
         LOGGER.debug("Test 'languageTest' is executed");
     }

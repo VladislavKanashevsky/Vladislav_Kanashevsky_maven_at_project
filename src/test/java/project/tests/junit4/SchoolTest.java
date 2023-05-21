@@ -2,7 +2,6 @@ package project.tests.junit4;
 
 import org.apache.log4j.Logger;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import project.driver.Driver;
@@ -40,8 +39,7 @@ public class SchoolTest {
         actions.selectingCopyElement(school.findTutorial());
         google.getGoogleUrl();
         actions.selectingPasteElement(google.findSearchField());
-        Assert.assertEquals("Some links don't contain the 'Tutorial' word", google.displayedResultsCount().size(),
-                google.displayedResultsCountContainsTutorial());
+        google.displayedResults();
         LOGGER.debug("Test 'tutorialTest' is executed");
     }
 }

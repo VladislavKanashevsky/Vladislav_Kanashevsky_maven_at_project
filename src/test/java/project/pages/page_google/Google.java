@@ -1,11 +1,11 @@
 package project.pages.page_google;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import project.driver.Driver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -20,8 +20,6 @@ public class Google {
 
     public static final String RESULT = "//h3[contains(text(), 'tutorial') or contains(text(), 'Tutorial') or contains(text(), 'TUTORIAL') or contains(text(), TuToRiAl) or contains(text(), tUtOrIaL)]";
 
-    public static final String TUTORIAL = "tutorial";
-
     public static final Logger LOGGER = Logger.getLogger(Google.class.getName());
 
     public void getGoogleUrl() {
@@ -34,27 +32,10 @@ public class Google {
         return driver.findElement(By.cssSelector(SEARCH));
     }
 
-    public List<WebElement> displayedResultsCount() {
-        List<WebElement> allResults = driver.findElements(By.xpath(RESULT));
-        List<WebElement> displayedResults = new ArrayList<>();
-        for (WebElement item : allResults) {
-            if (item.isDisplayed()) {
-                displayedResults.add(item);
-            }
-        }
-        LOGGER.trace("Get results list");
-        return displayedResults;
-    }
-
-    public int displayedResultsCountContainsTutorial() {
-        int counter = 0;
-        for (WebElement item : displayedResultsCount()) {
-            if (item.getText().toLowerCase().contains(TUTORIAL)) {
-                counter++;
-            }
-        }
-        LOGGER.trace("Get the count of results");
-        return counter;
+    public List<WebElement> displayedResults() {
+        List<WebElement> webElements = driver.findElements(By.xpath(RESULT));
+        Assert.assertEquals("Result isn't 'tutorial'", 14, webElements.size());
+        return webElements;
     }
 }
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-public class ResultsPage {
+public class ResultsPageBooking {
 
     WebDriver driver = Driver.getWebDriver();
 
@@ -36,12 +36,12 @@ public class ResultsPage {
 
     public static final String FIRST_HOTEL_URL = "//*[@id='search_results_table']//div[@data-testid='property-card'][1]//div[@data-testid='title']/..";
 
-    public static final Logger LOGGER = Logger.getLogger(ResultsPage.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(ResultsPageBooking.class.getName());
 
-    public void clickOnTheMaxPricePerNight() {
+    public void clickOnTheMaxPriceNight() {
         try {
             driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_FLAG, "span[2]"))).click();
-            LOGGER.trace("Click on the max price per night in the filters");
+            LOGGER.trace("Click on the max price night in the filters");
         } catch (NoSuchElementException e) {
             Actions make = new Actions(driver);
             make
@@ -50,7 +50,7 @@ public class ResultsPage {
                     .release()
                     .build()
                     .perform();
-            LOGGER.trace("Set the max price per night in the filters");
+            LOGGER.trace("Set the max price night in the filters");
         }
     }
 
@@ -64,36 +64,36 @@ public class ResultsPage {
 
     public void clickOnTheSortDropdown() {
         driver.findElement(By.cssSelector(SORT_DROP_DOWN)).click();
-        LOGGER.trace("Click on the Sorting dropdown");
+        LOGGER.trace("Click on the Sort dropdown");
     }
 
-    public void clickOnThePriceSorting() {
+    public void clickOnThePriceSort() {
         driver.findElement(By.cssSelector(SORT_PRICE)).click();
-        LOGGER.trace("Click on the price sorting");
+        LOGGER.trace("Click on the price sort");
     }
 
-    public void assertPricePerNight() {
+    public void assertPriceNight() {
         int hotelPricePerNight = Integer.parseInt(driver.findElement(By.xpath(ASSERT_PRICE_NIGHT)).getText().replaceAll("[^0-9]", "")) / 7;
-        int filterPricePerNight;
+        int filterPriceNight;
         try {
-            filterPricePerNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_FLAG, "div[@data-testid='filters-group-label-content']"))).getText().replaceAll("[^0-9]", ""));
+            filterPriceNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_FLAG, "div[@data-testid='filters-group-label-content']"))).getText().replaceAll("[^0-9]", ""));
         } catch (NoSuchElementException e) {
-            filterPricePerNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_SCROLL, "input[1]"))).getAttribute("value"));
+            filterPriceNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_SCROLL, "input[1]"))).getAttribute("value"));
         }
-        Assert.assertTrue("The price per night is more than filter price", hotelPricePerNight >= filterPricePerNight);
-        LOGGER.trace("Check the hotel price per night and the filters price per night");
+        Assert.assertTrue("The price night is more than filter price", hotelPricePerNight >= filterPriceNight);
+        LOGGER.trace("Check the hotel price night and the filters price per night");
     }
 
-    public void assertPricePerNightTestNG() {
-        int hotelPricePerNight = Integer.parseInt(driver.findElement(By.xpath(ASSERT_PRICE_NIGHT)).getText().replaceAll("[^0-9]", "")) / 7;
-        int filterPricePerNight;
+    public void assertPriceNightTestNG() {
+        int hotelPriceNight = Integer.parseInt(driver.findElement(By.xpath(ASSERT_PRICE_NIGHT)).getText().replaceAll("[^0-9]", "")) / 7;
+        int filterPriceNight;
         try {
-            filterPricePerNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_FLAG, "div[@data-testid='filters-group-label-content']"))).getText().replaceAll("[^0-9]", ""));
+            filterPriceNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_FLAG, "div[@data-testid='filters-group-label-content']"))).getText().replaceAll("[^0-9]", ""));
         } catch (NoSuchElementException e) {
-            filterPricePerNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_SCROLL, "input[1]"))).getAttribute("value"));
+            filterPriceNight = Integer.parseInt(driver.findElement(By.xpath(String.format(MAX_PRICE_PER_NIGHT_XPATH_SCROLL, "input[1]"))).getAttribute("value"));
         }
-        org.testng.Assert.assertTrue(hotelPricePerNight >= filterPricePerNight, "The price per night is more than filter price");
-        LOGGER.trace("Check the hotel price per night and the filters price per night");
+        org.testng.Assert.assertTrue(hotelPriceNight >= filterPriceNight, "The price per night is more than filter price");
+        LOGGER.trace("Check the hotel price night and the filters price per night");
     }
 
     public List<WebElement> findHotels() {

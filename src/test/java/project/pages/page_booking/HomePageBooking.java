@@ -10,7 +10,7 @@ import project.driver.Driver;
 
 import java.time.Duration;
 
-public class HomePage {
+public class HomePageBooking {
 
     WebDriver driver = Driver.getWebDriver();
 
@@ -42,9 +42,9 @@ public class HomePage {
 
     public final static String REGISTRATION = "//*[@data-testid='header-sign-up-button']";
 
-    public static final Logger LOGGER = Logger.getLogger(HomePage.class.getName().getClass());
+    public static final Logger LOGGER = Logger.getLogger(HomePageBooking.class.getName().getClass());
 
-    public void getUrl() {
+    public void getBookingUrl() {
         driver.get(BOOKING);
         LOGGER.trace("Open the https://booking.com");
     }
@@ -54,14 +54,14 @@ public class HomePage {
         LOGGER.trace("Skip the SignIn offer popup");
     }
 
-    public void selectingPlace(String placeName) {
+    public void selectPlace(String placeName) {
         driver.findElement(By.cssSelector(PLACE_NAME)).sendKeys(placeName);
         LOGGER.trace("Enter the city name");
         driver.findElement(By.xpath(PLACE_NAME_CLICK + placeName + "')]")).click();
         LOGGER.trace("Click on the city");
     }
 
-    public void selectingDate(String date) {
+    public void selectDate(String date) {
         driver.findElement(By.cssSelector(DATA + date + "']")).click();
         LOGGER.trace("Select date");
     }

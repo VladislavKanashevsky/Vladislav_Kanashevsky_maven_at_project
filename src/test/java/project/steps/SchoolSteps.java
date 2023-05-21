@@ -62,8 +62,7 @@ public class SchoolSteps {
 
     @Then("I check that all result links contain the word \"Tutorial\"")
     public void checkResults() {
-        Assert.assertEquals("Some links don't contain the 'Tutorial' word", google.displayedResultsCount().size(),
-                google.displayedResultsCountContainsTutorial());
+        Assert.assertEquals("Some links don't contain the 'Tutorial' word", google.displayedResults().size());
         LOGGER.debug("Step 'I check that all result links contain the word \"Tutorial\"' is executed");
     }
 }

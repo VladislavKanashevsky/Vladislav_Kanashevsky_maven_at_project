@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.testng.log4testng.Logger;
 import project.driver.Driver;
 
-public class HotelPage {
+public class HotelPageBooking {
 
     WebDriver driver = Driver.getWebDriver();
 
     public static final String NUMBER_HOTEL_RATING = "//*[@data-testid='review-score-right-component']/div[1]";
 
-    public static final Logger LOGGER = Logger.getLogger(HotelPage.class.getName().getClass());
+    public static final Logger LOGGER = Logger.getLogger(HotelPageBooking.class.getName().getClass());
 
     public int getNumberOfHotelRating() {
         LOGGER.trace("Find the hotel rating value");

@@ -1,4 +1,4 @@
-package day21;
+package classwork.day21;
 
 
 import java.util.List;

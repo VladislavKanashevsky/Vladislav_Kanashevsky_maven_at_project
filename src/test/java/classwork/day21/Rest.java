@@ -1,5 +1,5 @@
 
-package day21;
+package classwork.day21;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

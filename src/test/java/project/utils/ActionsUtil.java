@@ -40,25 +40,10 @@ public class ActionsUtil {
         LOGGER.trace("Ctrl+V and Enter on the selected element");
     }
 
-    public void selectingPaste() {
-        make
-                .keyDown(Keys.LEFT_CONTROL)
-                .sendKeys("v").clickAndHold()
-                .keyUp(Keys.LEFT_CONTROL)
-                .build()
-                .perform();
-        LOGGER.trace("Ctrl+V on the selected element");
-    }
-
     public void hoverElement(WebElement webElement) {
         make.moveToElement(webElement);
         make.perform();
         LOGGER.trace("Hover on the selected element");
-    }
-
-    public void openNewTab() {
-        ((JavascriptExecutor) driver).executeScript("window.open();");
-        LOGGER.trace("Open new tab");
     }
 
     public void clickAndHold(WebElement webElement) {

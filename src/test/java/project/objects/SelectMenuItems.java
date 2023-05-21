@@ -23,27 +23,27 @@ public class SelectMenuItems {
 
     public static final Logger LOGGER = Logger.getLogger(SelectMenuItems.class.getName());
 
-    public void selectGroup1Option1OfSelectValue() {
+    public void selectGroupOption() {
         driver.findElement(By.id(REACT_SELECT_2_OPTION_0_0)).click();
-        LOGGER.trace("Click on the Group1Option1O");
+        LOGGER.trace("Click on the GroupOption");
     }
 
-    public void selectDrOfSelectOne() {
+    public void selectDr() {
         driver.findElement(By.id(REACT_SELECT_3_OPTION_0_0)).click();
         LOGGER.trace("Click on the Dr");
     }
 
-    public void selectBlueOfOldStyleSelectMenu() {
+    public void selectOfOldStyle() {
         new Select(driver.findElement(By.id(OLD_SELECT_MENU))).selectByValue("1");
         LOGGER.trace("Click on the Blue");
     }
 
-    public void selectGreenOfMultiSelectDropdown() {
+    public void selectOfMulti() {
         driver.findElement(By.id(REACT_SELECT_4_OPTION_0_0)).click();
         LOGGER.trace("Click on the Green");
     }
 
-    public void selectAudiOfStandardMultiSelect() {
+    public void selectAudiOfStandardMulti() {
         new Select(driver.findElement(By.id(CARS))).selectByValue("audi");
         LOGGER.trace("Click on the Audi");
     }

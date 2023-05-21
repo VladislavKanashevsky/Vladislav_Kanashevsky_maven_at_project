@@ -7,13 +7,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import project.driver.Driver;
 import project.objects.SelectMenuItems;
-import project.pages.page_demoqa.SelectMenu;
+import project.pages.page_demoqa.SelectMenuDemoqa;
 
 import org.apache.log4j.Logger;
 
 public class DemoqaSteps {
 
-    SelectMenu selectMenu = new SelectMenu();
+    SelectMenuDemoqa selectMenuDemoqa = new SelectMenuDemoqa();
 
     SelectMenuItems selectMenuItems = new SelectMenuItems();
 
@@ -21,69 +21,69 @@ public class DemoqaSteps {
 
     @Before(value = "@demoQA")
     public void beforeTests() {
-        LOGGER.info("The demoQA cucumber Before method is started");
+        LOGGER.info("The demoqa cucumber Before method is started");
         Driver.getWebDriver();
-        LOGGER.info("The demoQA cucumber Before method is finished");
+        LOGGER.info("The demoqa cucumber Before method is finished");
     }
 
     @After(value = "@demoQA")
     public void afterTests() {
-        LOGGER.info("The demoQA cucumber After method is started");
+        LOGGER.info("The demoqa cucumber After method is started");
         Driver.closeDriver();
-        LOGGER.info("The demoQA cucumber After method is finished");
+        LOGGER.info("The demoqa cucumber After method is finished");
     }
 
     @Given("I open \"demoQA.com\"")
     public void openDemoQA() {
-        selectMenu.getUrlToSelectMenu();
+        selectMenuDemoqa.getUrlToSelectMenuDemoqa();
         LOGGER.debug("Step 'I open \"demoQA.com\"' is executed");
     }
 
     @When("I click on the Select Value Dropdown")
     public void clickSelectValueDropdown() {
-        selectMenu.clickSelectValueDropdown();
+        selectMenuDemoqa.clickSelectValueDropdown();
         LOGGER.debug("Step 'I click on the Select Value Dropdown' is executed");
     }
 
     @When("I select Group1 Option1")
     public void selectGroup1Option1OfSelectValue() {
-        selectMenuItems.selectGroup1Option1OfSelectValue();
-        LOGGER.debug("Step 'I select Group1 Option1' is executed");
+        selectMenuItems.selectGroupOption();
+        LOGGER.debug("Step 'I select Group Option' is executed");
     }
 
     @When("I click on the Select One Dropdown")
     public void clickSelectOneDropdown() {
-        selectMenu.clickSelectOneDropdown();
+        selectMenuDemoqa.clickSelectOneDropdown();
         LOGGER.debug("Step 'I click on the Select One Dropdown' is executed");
     }
 
     @When("I select Dr")
     public void selectDrOfSelectOne() {
-        selectMenuItems.selectDrOfSelectOne();
+        selectMenuItems.selectDr();
         LOGGER.debug("Step 'I select Dr' is executed");
     }
 
     @When("I select Blue Of Old Style Select Menu")
     public void selectBlueOfOldStyleSelectMenu() {
-        selectMenuItems.selectBlueOfOldStyleSelectMenu();
+        selectMenuItems.selectOfOldStyle();
         LOGGER.debug("Step 'I select Blue Of Old Style Select Menu' is executed");
     }
 
     @When("I click on the Multi Select Dropdown")
     public void clickMultiSelectDropdown() {
-        selectMenu.clickMultiSelectDropdown();
+        selectMenuDemoqa.clickMultiSelectDropdown();
         LOGGER.debug("Step 'I click on the Multi Select Dropdown' is executed");
     }
 
     @When("I select Green")
     public void selectGreenOfMultiSelectDropdown() {
-        selectMenuItems.selectGreenOfMultiSelectDropdown();
+        selectMenuItems.selectOfMulti();
         LOGGER.debug("Step 'I select Green' is executed");
     }
 
     @When("I select Audi in the Standard Multi Select")
     public void selectAudiOfStandardMultiSelect() {
-        selectMenuItems.selectAudiOfStandardMultiSelect();
+        selectMenuItems.selectAudiOfStandardMulti();
         LOGGER.debug("Step 'I select Audi in the Standard Multi Select' is executed");
     }
 

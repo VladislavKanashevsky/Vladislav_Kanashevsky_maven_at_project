@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import project.driver.Driver;
 import project.objects.SelectMenuItems;
-import project.pages.page_demoqa.SelectMenu;
+import project.pages.page_demoqa.SelectMenuDemoqa;
 
 public class DemoqaTest {
 
-    SelectMenu selectMenu = new SelectMenu();
+    SelectMenuDemoqa selectMenuDemoqa = new SelectMenuDemoqa();
 
     SelectMenuItems selectMenuItems = new SelectMenuItems();
 
@@ -32,15 +32,15 @@ public class DemoqaTest {
 
     @Test
     public void selectTest() {
-        selectMenu.getUrlToSelectMenu();
-        selectMenu.clickSelectValueDropdown();
-        selectMenuItems.selectGroup1Option1OfSelectValue();
-        selectMenu.clickSelectOneDropdown();
-        selectMenuItems.selectDrOfSelectOne();
-        selectMenuItems.selectBlueOfOldStyleSelectMenu();
-        selectMenu.clickMultiSelectDropdown();
-        selectMenuItems.selectGreenOfMultiSelectDropdown();
-        selectMenuItems.selectAudiOfStandardMultiSelect();
+        selectMenuDemoqa.getUrlToSelectMenuDemoqa();
+        selectMenuDemoqa.clickSelectValueDropdown();
+        selectMenuItems.selectGroupOption();
+        selectMenuDemoqa.clickSelectOneDropdown();
+        selectMenuItems.selectDr();
+        selectMenuItems.selectOfOldStyle();
+        selectMenuDemoqa.clickMultiSelectDropdown();
+        selectMenuItems.selectOfMulti();
+        selectMenuItems.selectAudiOfStandardMulti();
         LOGGER.debug("Test 'selectTest' is executed");
     }
 }

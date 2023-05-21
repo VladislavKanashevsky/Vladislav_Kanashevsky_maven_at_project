@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import project.driver.Driver;
 import org.apache.log4j.Logger;
 
-public class SelectMenu {
+public class SelectMenuDemoqa {
 
     WebDriver driver = Driver.getWebDriver();
 
@@ -17,9 +17,9 @@ public class SelectMenu {
 
     public static final String MULTI_SELECT_DROP_DOWN = "//*[@id='react-select-4-input']/../../..";
 
-    public static final Logger LOGGER = Logger.getLogger(SelectMenu.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(SelectMenuDemoqa.class.getName());
 
-    public void getUrlToSelectMenu() {
+    public void getUrlToSelectMenuDemoqa() {
         driver.get(DEMOQA_URL);
         LOGGER.trace("Open the https://demoqa.com/select-menu");
     }

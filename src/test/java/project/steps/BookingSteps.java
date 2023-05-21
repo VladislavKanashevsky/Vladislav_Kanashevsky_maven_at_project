@@ -8,9 +8,9 @@ import io.cucumber.java.en.When;
 
 import org.junit.Assert;
 import project.driver.Driver;
-import project.pages.page_booking.HomePage;
-import project.pages.page_booking.HotelPage;
-import project.pages.page_booking.ResultsPage;
+import project.pages.page_booking.HomePageBooking;
+import project.pages.page_booking.HotelPageBooking;
+import project.pages.page_booking.ResultsPageBooking;
 import project.utils.ActionsUtil;
 import project.utils.DateUtil;
 
@@ -18,11 +18,11 @@ import org.apache.log4j.Logger;
 
 public class BookingSteps {
 
-    HomePage bookingHomePage = new HomePage();
+    HomePageBooking bookingHomePageBooking = new HomePageBooking();
 
-    ResultsPage bookingResultsPage = new ResultsPage();
+    ResultsPageBooking bookingResultsPageBooking = new ResultsPageBooking();
 
-    HotelPage bookingHotelPage = new HotelPage();
+    HotelPageBooking bookingHotelPageBooking = new HotelPageBooking();
 
     DateUtil date = new DateUtil();
 
@@ -50,137 +50,137 @@ public class BookingSteps {
 
     @Given("I open the \"booking.com\"")
     public void openBooking() {
-        bookingHomePage.getUrl();
+        bookingHomePageBooking.getBookingUrl();
         LOGGER.debug("Step 'I open the \"booking.com\"' is executed");
     }
 
     @When("I skip \"Sign In\" offer")
     public void skipSignInOffer() {
-        bookingHomePage.skipSignInOffer();
+        bookingHomePageBooking.skipSignInOffer();
         LOGGER.debug("Step 'I skip \"Sign In\" offer' is executed");
     }
 
     @When("I select the {string} city")
     public void selectingPlace(String city) {
-        bookingHomePage.selectingPlace(city);
+        bookingHomePageBooking.selectPlace(city);
         LOGGER.debug("Step 'I select the {string} city' is executed");
     }
 
     @When("I set dates from {int} to {int}")
     public void selectingDates(int dateFrom, int dateTo) {
-        bookingHomePage.selectingDate(date.setDay(dateFrom));
-        bookingHomePage.selectingDate(date.setDay(dateTo));
+        bookingHomePageBooking.selectDate(date.setDay(dateFrom));
+        bookingHomePageBooking.selectDate(date.setDay(dateTo));
         LOGGER.debug("Step 'I set dates from {int} to {int}' is executed");
     }
 
     @When("I click on the Occupancy dropdown")
     public void clickOnOccupancyDropdown() {
-        bookingHomePage.clickOnOccupancyDropdown();
+        bookingHomePageBooking.clickOnOccupancyDropdown();
         LOGGER.debug("Step 'I click on the Occupancy dropdown' is executed");
     }
 
     @When("I click on the Adults +")
     public void clickOnTheAdults() {
-        bookingHomePage.clickOnTheAdults();
+        bookingHomePageBooking.clickOnTheAdults();
         LOGGER.debug("Step 'I click on the Adults +' is executed");
     }
 
     @When("I click on the Apartments +")
     public void clickOnTheApartments() {
-        bookingHomePage.clickOnTheApartments();
+        bookingHomePageBooking.clickOnTheApartments();
         LOGGER.debug("I click on the Apartments +' is executed");
     }
 
     @When("I click on the Submit")
     public void clickOnTheSubmit() {
-        bookingHomePage.clickOnTheSubmit();
+        bookingHomePageBooking.clickOnTheSubmit();
         LOGGER.debug("Step 'I click on the Submit' is executed");
     }
 
     @When("I click on the max price per night in the filters")
     public void clickOnTheMaxPricePerNight() {
-        bookingResultsPage.clickOnTheMaxPricePerNight();
+        bookingResultsPageBooking.clickOnTheMaxPriceNight();
         LOGGER.debug("Step 'I click on the max price per night in the filters' is executed");
     }
 
     @When("I wait when spinner disappears")
     public void waitForSpinner() {
-        bookingResultsPage.waitForSpinner();
+        bookingResultsPageBooking.waitForSpinner();
         LOGGER.debug("Step 'I wait when spinner disappears' is executed");
     }
 
     @When("I click on the Sorting dropdown")
     public void clickOnTheSortDropdown() {
-        bookingResultsPage.clickOnTheSortDropdown();
+        bookingResultsPageBooking.clickOnTheSortDropdown();
         LOGGER.debug("Step 'I click on the Sorting dropdown' is executed");
     }
 
     @When("I select the Price Sorting")
     public void clickOnThePriceSorting() {
-        bookingResultsPage.clickOnThePriceSorting();
+        bookingResultsPageBooking.clickOnThePriceSort();
         LOGGER.debug("Step 'I select the Price Sorting' is executed");
     }
 
     @Then("I check the price per night")
     public void checkPricePerNight() {
-        bookingResultsPage.assertPricePerNight();
+        bookingResultsPageBooking.assertPriceNight();
         LOGGER.debug("Step 'I check the price per night' is executed");
     }
 
     @When("I scroll to the {int}th hotel")
     public void scrollToHotel(int hotel) {
-        actions.scrollToElement(bookingResultsPage.findHotel(hotel));
+        actions.scrollToElement(bookingResultsPageBooking.findHotel(hotel));
         LOGGER.debug("Step 'I scroll to the {int}th hotel' is executed");
     }
 
     @When("I change the {int}th hotel's background")
     public void changeHotelBackground(int hotel) {
-        actions.changeElementBackground(bookingResultsPage.findHotel(hotel));
+        actions.changeElementBackground(bookingResultsPageBooking.findHotel(hotel));
         LOGGER.debug("Step 'I change the {int}th hotel's background' is executed");
     }
 
     @When("I change the {int}th hotel's title color")
     public void changeHotelTextColor(int hotel) {
-        actions.changeElementTextColor(bookingResultsPage.findHotelTitle(hotel));
+        actions.changeElementTextColor(bookingResultsPageBooking.findHotelTitle(hotel));
         LOGGER.debug("Step 'I change the {int}th hotel's title color' is executed");
     }
 
     @Then("I check that colors of the {int}th hotel are changed")
     public void checkColorChanging(int hotel) {
-        Assert.assertEquals("The text color isn't red", "color: red;", bookingResultsPage.findHotelTitle(hotel).getAttribute("style"));
+        Assert.assertEquals("The text color isn't red", "color: red;", bookingResultsPageBooking.findHotelTitle(hotel).getAttribute("style"));
         LOGGER.debug("Step 'I check that colors of the {int}th hotel are changed' is executed");
     }
 
     @Then("I check appearance at least one hotel")
     public void checkHotels() {
-        Assert.assertTrue("There are no hotels", bookingResultsPage.findHotels().size() > 0);
+        Assert.assertTrue("There are no hotels", bookingResultsPageBooking.findHotels().size() > 0);
         LOGGER.debug("Step 'I check appearance at least one hotel' is executed");
     }
 
     @When("I click on the max rating in the filters")
     public void clickOnTheMaxRating() {
-        bookingResultsPage.clickOnTheMaxRating();
-        rating = bookingResultsPage.getNumberOfMaxRating();
+        bookingResultsPageBooking.clickOnTheMaxRating();
+        rating = bookingResultsPageBooking.getNumberOfMaxRating();
         LOGGER.debug("Step 'I click on the max rating in the filters' is executed");
     }
 
     @When("I open the first hotel")
     public void openFirstHotelUrl() {
-        bookingResultsPage.openFirstHotelUrl();
+        bookingResultsPageBooking.openFirstHotelUrl();
         LOGGER.debug("Step 'I open the first hotel' is executed");
     }
 
     @Then("I check the hotel rating")
     public void checkHotelRating() {
         Assert.assertTrue("The hotel rating is less than 9",
-                bookingHotelPage.getNumberOfHotelRating() >= rating);
+                bookingHotelPageBooking.getNumberOfHotelRating() >= rating);
         LOGGER.debug("Step 'I check the hotel rating' is executed");
     }
 
     @When("I hover on the currency")
     public void hoverOnTheCurrency() {
-        actions.hoverElement(bookingHomePage.findCurrency());
-        tooltip = bookingHomePage.getCurrencyTooltip();
+        actions.hoverElement(bookingHomePageBooking.findCurrency());
+        tooltip = bookingHomePageBooking.getCurrencyTooltip();
         LOGGER.debug("Step 'I hover on the currency' is executed");
     }
 
@@ -192,8 +192,8 @@ public class BookingSteps {
 
     @When("I hover on the language")
     public void hoverOnTheLanguage() {
-        actions.hoverElement(bookingHomePage.findLanguage());
-        tooltip = bookingHomePage.getLanguageTooltip();
+        actions.hoverElement(bookingHomePageBooking.findLanguage());
+        tooltip = bookingHomePageBooking.getLanguageTooltip();
         LOGGER.debug("Step 'I hover on the language' is executed");
     }
 

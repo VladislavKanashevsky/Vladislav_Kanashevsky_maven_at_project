@@ -1,4 +1,4 @@
-package day21;
+package classwork.day21;
 
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;

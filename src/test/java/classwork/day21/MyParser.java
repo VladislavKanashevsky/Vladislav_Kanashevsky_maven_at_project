@@ -1,4 +1,4 @@
-package day21;
+package classwork.day21;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

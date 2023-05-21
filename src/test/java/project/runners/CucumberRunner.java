@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "summary"},
         glue = {"homework.at_project.steps"},
-        features = "src/test/resources/features/at_project.feature"
+        features = "src/test/resources/features/project.feature"
 //        tags = {"@booking","@w3schools"}
 )
 

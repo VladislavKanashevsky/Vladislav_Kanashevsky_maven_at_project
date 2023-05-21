@@ -23,16 +23,16 @@ public class SchoolNgTest {
 
     @BeforeMethod
     public void beforeTests() {
-        LOGGER.info("The w3schools testNG Before method is started");
+        LOGGER.info("The school testNG Before method is started");
         Driver.getWebDriver();
-        LOGGER.info("The w3schools testNG Before method is finished");
+        LOGGER.info("The school testNG Before method is finished");
     }
 
     @AfterMethod
     public void afterTests() {
-        LOGGER.info("The w3schools testNG After method is started");
+        LOGGER.info("The school testNG After method is started");
         Driver.closeDriver();
-        LOGGER.info("The w3schools testNG After method is finished");
+        LOGGER.info("The school testNG After method is finished");
     }
 
     @Test
@@ -41,7 +41,7 @@ public class SchoolNgTest {
         actions.selectingCopyElement(school.findTutorial());
         google.getGoogleUrl();
         actions.selectingPasteElement(google.findSearchField());
-        Assert.assertEquals(google.displayedResultsCountContainsTutorial(), google.displayedResultsCount().size(), "Some links don't contain the 'Tutorial' word");
+        Assert.assertEquals(google.displayedResults().size(), "Some links don't contain the 'Tutorial' word");
         LOGGER.debug("Test 'tutorialTest' is executed");
     }
 }

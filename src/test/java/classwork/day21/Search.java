@@ -1,4 +1,4 @@
-package day21;
+package classwork.day21;
 
 public class Search {
 

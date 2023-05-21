@@ -7,7 +7,7 @@ import project.driver.Driver;
 
 import org.apache.log4j.Logger;
 
-public class SingPage {
+public class SingPageBooking {
 
     WebDriver driver = Driver.getWebDriver();
 
@@ -21,7 +21,7 @@ public class SingPage {
 
     public static final String CAPTCHA = "//div[@aria-label='Нажать и удерживать']";
 
-    public static final Logger LOGGER = Logger.getLogger(SingPage.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(SingPageBooking.class.getName());
 
     public void enterEmail(String myEmail) {
         driver.findElement(By.id(USERNAME)).sendKeys(myEmail);

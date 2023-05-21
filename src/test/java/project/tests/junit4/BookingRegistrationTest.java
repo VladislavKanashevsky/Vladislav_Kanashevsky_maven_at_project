@@ -4,15 +4,15 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import project.pages.page_booking.HomePage;
-import project.pages.page_booking.SingPage;
+import project.pages.page_booking.HomePageBooking;
+import project.pages.page_booking.SingPageBooking;
 import project.utils.ActionsUtil;
 
 public class BookingRegistrationTest {
 
-    HomePage bookingHomePage = new HomePage();
+    HomePageBooking bookingHomePageBooking = new HomePageBooking();
 
-    SingPage singPage = new SingPage();
+    SingPageBooking singPageBooking = new SingPageBooking();
 
     ActionsUtil actions = new ActionsUtil();
 
@@ -28,13 +28,13 @@ public class BookingRegistrationTest {
 
     @Test
     public void registerTest() {
-        bookingHomePage.getUrl();
-        bookingHomePage.skipSignInOffer();
-        bookingHomePage.clickRegister();
-        singPage.enterEmail("leffler.baby@trashmail.fr");
-        singPage.clickSubmit();
-        singPage.enterPassword("Af0123456789");
-        actions.clickAndHold(singPage.getCaptcha());
+        bookingHomePageBooking.getBookingUrl();
+        bookingHomePageBooking.skipSignInOffer();
+        bookingHomePageBooking.clickRegister();
+        singPageBooking.enterEmail("leffler.baby@trashmail.fr");
+        singPageBooking.clickSubmit();
+        singPageBooking.enterPassword("Af0123456789");
+        actions.clickAndHold(singPageBooking.getCaptcha());
     }
 }
 
